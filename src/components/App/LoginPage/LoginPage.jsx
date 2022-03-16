@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import './Home.css';
-import HomeController from './HomeController';
+import './LoginPage.css';
+import LoginPageController from './LoginPageController';
 import axios from 'axios'
 
-const Login = () => {
-  const [pseudo, setPseudo] = useState('');
+const LoginPage = () => {
+  const [login, setPseudo] = useState('');
   const [password, setPassword] = useState('');
   const [ip, setIp] = useState('');
   const [navigatorUser, setNavigatorUser] = useState();
@@ -59,20 +59,49 @@ const Login = () => {
   }
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    HomeController.login(pseudo, password).then((user) => {
+    const user = {
+      login , password
+    }
+    LoginPageController.login(user).then((user) => {
         console.log(user);
     });
   };
   return (
-    <form onSubmit={handleSubmit} className="form_login">
-      <label>Nom d'utilisateur</label>
-      <input className="input_login" type="text" value={pseudo} onChange={handleOnChangePseudo} />
-      <label>Mot de passe</label>
-      <input className="input_login" type="password" value={password} onChange={handleOnChangePassword}/>
-      <input type="submit" value="Connexion" className="button_form button_login" />
-      <p>{ip}</p>
-      <p>Tu utilise {navigatorUser} comme navigateur</p>
-    </form>
+      <div className="signin_block">
+      <div className="signin_block_connexion">
+        CONNEXION
+      </div>
+      <form className="signin_form" onSubmit={handleSubmit}>
+        <div className="textareas">
+          <div className="area_block">
+            <label htmlFor="email_area" className="area_label">
+              <input type="email" className="area_input" id="email_area" placeholder="Adresse mail" value={login} onChange={handleOnChangePseudo} required />
+            </label>
+          </div>
+          <div className="area_block">
+            <label htmlFor="password_area" className="area_label">
+              <input type="password" className="area_input" id="password_area" placeholder="Mot de passe" value={password} onChange={handleOnChangePassword} required />
+            </label>
+
+          </div>
+          {/*{hasError
+            ? (
+              <div className="error_message">
+                Votre adresse mail et/ou votre mot de passe est incorrect
+              </div>
+            )
+            : ''} */}
+
+        </div>
+       
+        <div className="signin_button_block">
+          <div className="signin_input">
+            <input type="submit" value="SE CONNECTER" />
+          </div>
+
+        </div>
+      </form>
+    </div>
   );
 };
-export default Login;
+export default LoginPage;

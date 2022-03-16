@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Home from './components/App/Home/Home';
+import LoginPage from './components/App/LoginPage/LoginPage';
+import SendingCode from './components/App/SendingCodePage/SendingCode';
 
 function App() {
   return (
     <div className="App">
-      <Home/>
+      {/* <LoginPage/> */}
+      <SendingCode/>
     </div>
   );
 }
