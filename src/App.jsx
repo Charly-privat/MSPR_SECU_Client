@@ -6,8 +6,8 @@ import SendingCode from './components/App/SendingCodePage/SendingCode';
 function App() {
   return (
     <div className="App">
-      {/* <LoginPage/> */}
-      <SendingCode/>
+      <LoginPage/>
+      {/* <SendingCode/> */}
     </div>
   );
 }

@@ -2,8 +2,7 @@ import axios from 'axios';
 
 const LoginController = {
   login: (user) => new Promise((succes, fail) => {
-    console.log(user);
-    axios.post(`http://localhost:8081/`, user)
+    axios.post(`http://localhost:8081/authentification`, user)
       .then(({ data }) => {
         succes(data);
       })

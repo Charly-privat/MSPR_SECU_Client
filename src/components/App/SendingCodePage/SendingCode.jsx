@@ -8,8 +8,10 @@ const SendingCode = () => {
   const tokenTemp = useRef();
 
   useEffect( () => {
-// recuperer le code dans l'url
-
+    // recuperer le code dans l'url
+    // if (window.location.href.indexOf(tokenTemp)){
+    //     // valider si le token est bien dans l'url
+    // }
   }, [])
 
   const handleOnChangeSecretCode = (ev) => {
@@ -22,15 +24,13 @@ const SendingCode = () => {
     
     SendingCodeController.connexion(SendingValue).then((res) => {
         console.log(res);
+        // reception de la reponse du serveur
+        // connecter l'utilisateur si le code est bon 
+        // ou afficher une erreur de code incorrect 
+        // ou afficher l'erreur que le compte est bloqué
     });
   };
   return (
-    // <form onSubmit={handleSubmit} className="form_login">
-    //   <label>Code de confirmation </label>
-    //   <input className="input_login" type="text" value={secretCode} onChange={handleOnChangeSecretCode} />
-    //   <input type="submit" value="Connexion" className="button_form button_login" />
-    // </form>
-
 <div className="signin_block">
 <div className="signin_block_connexion">
   Rentrer le code recu par mail
