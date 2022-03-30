@@ -2,17 +2,26 @@ import React, { useState, useEffect, useRef } from 'react';
 import './SendingCode.css';
 import SendingCodeController from './SendingCodeController';
 
-const SendingCode = () => {
+const SendingCode = ({emailUser}) => {
+
   const [secretCode, setsecretCode] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
 
   const tokenTemp = useRef();
 
   useEffect( () => {
-    // recuperer le code dans l'url
+
+    setUserEmail(emailUser);
+    
+  }, []);
+
+
+
+  // recuperer le code dans l'url
     // if (window.location.href.indexOf(tokenTemp)){
     //     // valider si le token est bien dans l'url
     // }
-  }, [])
 
   const handleOnChangeSecretCode = (ev) => {
     setsecretCode(ev.currentTarget.value);
@@ -20,7 +29,7 @@ const SendingCode = () => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    const SendingValue = [secretCode , tokenTemp.current]
+    const SendingValue = [secretCode , userEmail]
     
     SendingCodeController.connexion(SendingValue).then((res) => {
         console.log(res);
@@ -30,6 +39,7 @@ const SendingCode = () => {
         // ou afficher l'erreur que le compte est bloqué
     });
   };
+  
   return (
 <div className="signin_block">
 <div className="signin_block_connexion">

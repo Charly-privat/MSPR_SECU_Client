@@ -18,7 +18,7 @@ const LoginPage = () => {
   useEffect( () => {
     setNavigatorUser(getNaviatorUser());
      getData();
-     console.log(navigator);
+     console.log(sUsrAg.indexOf("Chrome"));
   }, [navigatorUser])
 
   const handleOnChangePseudo = (ev) => {
@@ -57,13 +57,13 @@ const LoginPage = () => {
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    const user = {
-      login , password
-    }
-    
     // const user = {
-    //   login , password ,ip, navigatorUser
+    //   login , password
     // }
+    
+    const user = {
+      login , password ,ip, navigatorUser
+    }
 
     LoginPageController.login(user).then((user) => {
         console.log(user);
